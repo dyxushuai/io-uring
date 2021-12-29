@@ -28,8 +28,7 @@ pub struct Probe(ptr::NonNull<sys::io_uring_probe>);
 
 impl Probe {
     pub(crate) const COUNT: usize = 256;
-    pub(crate) const SIZE: usize = mem::size_of::<sys::io_uring_probe>()
-        + Self::COUNT * mem::size_of::<sys::io_uring_probe_op>();
+    pub(crate) const SIZE: usize = Self::COUNT * mem::size_of::<sys::io_uring_probe_op>();
 
     /// Create a new probe with no features enabled.
     #[allow(clippy::cast_ptr_alignment)]
